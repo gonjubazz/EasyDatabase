@@ -35,7 +35,10 @@ class DataBase:
             self.Variables[data[0]] = Variable(data[2], self.NonFilteredVariables.index(variable), data[1])
 
     def get_variable(self, name):
-        return self.Variables[name]
+        try:
+            return self.Variables[name]
+        except KeyError:
+            return None
 
     def set_variable(self, name, var_type, new_value):
         index = self.Variables[name].index

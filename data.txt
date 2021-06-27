@@ -1,3 +1,1 @@
-width:int:720
-height:int:480
-aboba:float:23
+Gabitov Shamil:int:1173441935
