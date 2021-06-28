@@ -56,7 +56,6 @@ class Database:
     #  endregion
     #  region Public functions
 
-
     def get_variable(self, name):
         try:
             return self.__variables[name]
@@ -64,21 +63,34 @@ class Database:
             print("variable not founded")
             return None
 
-    def get_all_variables(self, method):
-        if method == "full":
-            return self.__variables
-        if method == "values":
-            values = []
-            for var in self.__variables.values():
-               values.append(var.value)
+    def get_variables(self, method, from_=-1, to=-1):
+        if from_ == -1 and to == -1:
+            if method == "full":
+                return self.__variables
+            if method == "values":
+                values = []
+                for var in self.__variables.values():
+                    values.append(var.value)
 
-            return values
-        if method == "names":
-            values = []
-            for var in self.__variables.keys():
-                values.append(var)
+                return values
+            if method == "names":
+                values = []
+                for var in self.__variables.keys():
+                    values.append(var)
 
-            return values
+                return values
+        else:
+            variables = []
+            for key in self.__variables.keys():
+                if from_ <= self.__variables[key].index <= to:
+                    if method == "full":
+                        variables.append(self.__variables[key])
+                    if method == "values":
+                        variables.append(self.__variables[key].value)
+                    if method == "names":
+                        variables.append(key)
+
+            return variables
 
     def set_variable(self, name, var_type, new_value):
         index = self.__variable_index(name)
