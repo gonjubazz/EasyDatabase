@@ -1,7 +1,7 @@
 import telebot
 from TxtDatabase import DataBase
 
-database = DataBase("data.txt")
+database = DataBase("telegram_db.txt")
 bot = telebot.TeleBot("1824586460:AAGZ1WMqvKgInBdUgjaRFAiB70aX265X7zU")
 
 
