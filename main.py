@@ -1,5 +1,4 @@
-import TxtDatabase2
+import database
 import random
-db = TxtDatabase2.Database("db.txt")
-
-print(db.get_variables("names", 10, 90))
+db = database.Database("db.txt")
+db.new_variable("main", "int", 14)
