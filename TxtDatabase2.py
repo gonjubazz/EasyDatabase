@@ -64,8 +64,21 @@ class Database:
             print("variable not founded")
             return None
 
-    def get_all_variables(self):
-        return self.__variables
+    def get_all_variables(self, method):
+        if method == "full":
+            return self.__variables
+        if method == "values":
+            values = []
+            for var in self.__variables.values():
+               values.append(var.value)
+
+            return values
+        if method == "names":
+            values = []
+            for var in self.__variables.keys():
+                values.append(var)
+
+            return values
 
     def set_variable(self, name, var_type, new_value):
         index = self.__variable_index(name)
